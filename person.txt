@@ -1,0 +1,6 @@
+Student Monika Warda 83495834288 Raszyn jezykowa 180.0
+Student Walery Kalasznikov 12345678911 Pruszków jezykowa 140.0
+Student Julia Ciasnicka 82934578236 Otwock jezykowa 1400.0
+Employee Micha³ tr¹ba 12345678911 wieliszew nauczyciel 8000.0
+Employee Kamila Broda 34906790342 Legionowo sprz¹taczka 4500.0
+Employee Tomasz Murarz 28935489251 wieliszew chemik 3500.0

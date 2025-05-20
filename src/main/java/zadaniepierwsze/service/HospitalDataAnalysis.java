@@ -3,6 +3,7 @@ package zadaniepierwsze.service;
 import zadaniepierwsze.model.*;
 
 import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.*;
 
 public class HospitalDataAnalysis {
@@ -79,13 +80,31 @@ public class HospitalDataAnalysis {
 
     ////    //e) Znajdz matki które urodzi³y bliŸniêta.
     public List<Mother> getMotherOfTwins() {
-        List<Mother> motherOfTwins = new ArrayList<>();
-        int twins = 2;
+        List<Mother> mothersWithTwins = new ArrayList<>();
+
         for (Mother readMother : mothers) {
-            if (readMother.getChildren().size() == twins){
-                motherOfTwins.add(readMother);
+            if (hasTwins(readMother)) {
+                mothersWithTwins.add(readMother);
             }
-        }return motherOfTwins;
+        }
+        return mothersWithTwins;
+    }
+
+    private boolean hasTwins(Mother mother) {
+        List<Child> children = new ArrayList<>(mother.getChildren());
+        if (children.size() < 2) return false;
+
+        children.sort(Comparator.comparing(Child::getBirthDate));
+
+        LocalDate lastDate = null;
+        for (Child readChild : children) {
+            if (readChild.getBirthDate().equals(lastDate)) {
+                return true;
+            }
+            lastDate = readChild.getBirthDate();
+        }
+
+        return false;
     }
 
     private int[] getDayArray() {

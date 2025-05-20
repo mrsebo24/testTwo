@@ -4,20 +4,20 @@ import zadanieczwarte.model.Figura;
 
 import java.util.List;
 
-public class Calculate {
+public class CalculateService {
 
     private List<Figura> figuraList;
 
-    public Calculate(List<Figura> figuraList) {
+    public CalculateService(List<Figura> figuraList) {
         this.figuraList = figuraList;
     }
 
     public Figura getFiguraWithMaxPerimeter(){
         Figura result = null;
         double maxPerimeter = 0;
-        for (Figura readFigura : figuraList) {
-            if (readFigura.calculatePerimeter() > maxPerimeter){
-                result = readFigura;
+        for (Figura f : figuraList) {
+            if (f.calculatePerimeter() > maxPerimeter){
+                result = f;
             }
         }return result;
     }
@@ -25,9 +25,9 @@ public class Calculate {
     public Figura getFiguraWithMaxArea(){
         Figura result = null;
         double maxArea = 0;
-        for (Figura readFigura : figuraList) {
-            if (readFigura.calculateArea() > maxArea){
-                result = readFigura;
+        for (Figura f : figuraList) {
+            if (f.calculateArea() > maxArea){
+                result = f;
             }
         }return result;
     }

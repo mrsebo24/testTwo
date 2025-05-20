@@ -1,47 +1,43 @@
 package zadanieczwarte.model;
 
-public class Kolo implements Figura {
-    private int counterKolo;
+import java.util.Objects;
+
+public class Kolo extends Figura {
+
     private double r;
 
+
     public Kolo(double r) {
-        this.r = r;
-        this.counterKolo = 0;
-    }
-    protected Kolo(double r, int counterAllFigury){
-        this.r = r / 2;
-        this.counterKolo = counterAllFigury;
-    }
-
-    public int getCounterKolo() {
-        return counterKolo;
-    }
-
-    public void setCounterKolo(int counterKolo) {
-        this.counterKolo = counterKolo;
-    }
-
-    public double getR() {
-        return r;
-    }
-
-    public void setR(double r) {
         this.r = r;
     }
 
     @Override
     public double calculatePerimeter() {
-        return 2 * PI_NUMBER * r;
+        return 2 * Math.PI * r;
     }
 
     @Override
     public double calculateArea() {
-        return PI_NUMBER * r * r;
+        return Math.PI * r * r;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Kolo kolo = (Kolo) o;
+        return Double.compare(kolo.r, r) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(r);
     }
 
     @Override
     public String toString() {
-        int castInt = (int) r;
-        return "Figura nr: " + counterKolo + " Ko³o o promieniu " + castInt + ".";
+
+        return "Figura nr: " + getNumber() + " Ko³o o promieniu " + r + ".";
     }
 }

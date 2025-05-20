@@ -2,46 +2,15 @@ package zadanieczwarte.model;
 
 import java.util.Objects;
 
-public class Prostokat implements Figura {
-    private int counterProstokat;
+public class Prostokat extends Figura {
     private double a;
     private double b;
 
     public Prostokat(double a, double b) {
         this.a = a;
         this.b = b;
-        this.counterProstokat = 0;
     }
 
-    protected Prostokat(double a, double b, int counterFigury){
-        this.a = a;
-        this.b = b;
-        this.counterProstokat = counterFigury;
-    }
-
-    public int getCounterProstokat() {
-        return counterProstokat;
-    }
-
-    public void setCounterProstokat(int counterProstokat) {
-        this.counterProstokat = counterProstokat;
-    }
-
-    public double getA() {
-        return a;
-    }
-
-    public void setA(double a) {
-        this.a = a;
-    }
-
-    public double getB() {
-        return b;
-    }
-
-    public void setB(double b) {
-        this.b = b;
-    }
 
     @Override
     public double calculatePerimeter() {
@@ -58,18 +27,17 @@ public class Prostokat implements Figura {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Prostokat prostokat = (Prostokat) o;
-        return counterProstokat == prostokat.counterProstokat && Double.compare(prostokat.a, a) == 0 && Double.compare(prostokat.b, b) == 0;
+        return Double.compare(prostokat.a, a) == 0 && Double.compare(prostokat.b, b) == 0;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(counterProstokat, a, b);
+        return Objects.hash(a, b);
     }
 
     @Override
     public String toString() {
-        int convertA = (int) a;
-        int convertB = (int) b;
-        return "Figura nr: " + counterProstokat + " Prostokat o bokach " + convertA + "x" + convertB + ".";
+
+        return "Figura nr: " + getNumber() + " Prostokat o bokach " + a + "x" + b + ".";
     }
 }

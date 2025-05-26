@@ -2,34 +2,14 @@ package zadanieczwarte.model;
 
 import java.util.Objects;
 
-public class Kwadrat extends FiguraBazowa {
-    private int counterKwadrat;
+public class Kwadrat extends Figura {
+
     private double a;
 
     public Kwadrat(double a) {
         this.a = a;
-        this.counterKwadrat = 0;
-    }
-    protected Kwadrat(double a, int counterFigury){
-        this.a = a;
-        this.counterKwadrat = counterFigury;
     }
 
-    public int getCounterKwadrat() {
-        return counterKwadrat;
-    }
-
-    public void setCounterKwadrat(int counterKwadrat) {
-        this.counterKwadrat = counterKwadrat;
-    }
-
-    public double getA() {
-        return a;
-    }
-
-    public void setA(double a) {
-        this.a = a;
-    }
 
     @Override
     public double calculatePerimeter() {
@@ -56,7 +36,7 @@ public class Kwadrat extends FiguraBazowa {
 
     @Override
     public String toString() {
-        int castInt = (int) a;
-        return "Figura nr: " + counterKwadrat + " Kwadrat o boku " + castInt + '.';
+
+        return "Figura nr: " + getNumber() + " Kwadrat o boku " + a + '.';
     }
 }

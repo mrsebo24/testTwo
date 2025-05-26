@@ -2,8 +2,8 @@ package zadanieczwarte.app;
 
 import zadanieczwarte.model.Figura;
 import zadanieczwarte.model.Kwadrat;
-import zadanieczwarte.service.Calculate;
-import zadanieczwarte.service.FileOperations;
+import zadanieczwarte.service.CalculateService;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -24,9 +24,9 @@ public class Runner {
         //b) Nastêpnie:
         //- znajdŸ figurê z najwiêkszym obwodem
         //- znajdŸ figurê z najwiêkszym polem
-        Calculate calculate = new Calculate(figury);
-        System.out.println("calculate.getFiguraWithMaxArea() = " + calculate.getFiguraWithMaxArea());
-        System.out.println("calculate.getFiguraWithMaxPerimeter() = " + calculate.getFiguraWithMaxPerimeter());
+        CalculateService calculateService = new CalculateService(figury);
+        System.out.println("calculate.getFiguraWithMaxArea() = " + calculateService.getFiguraWithMaxArea());
+        System.out.println("calculate.getFiguraWithMaxPerimeter() = " + calculateService.getFiguraWithMaxPerimeter());
 
         System.out.println("---------");
         System.out.println(figury.contains(new Kwadrat(10))); //powinno wypisc true
@@ -35,9 +35,10 @@ public class Runner {
         //d
         //- stworz metode pozwalaj¹c¹ zapisaæ liste figur do pliku w taki sposób aby...
         //- ... aby mo¿na by³o stworzyæ metodê wczytuj¹c¹ liste figur  z pliku.
-        FileOperations fileOperations = new FileOperations();
-        fileOperations.save("figury.txt", figury);
-        List<Figura> figuraList = fileOperations.readFigury("figury.txt");
+        //FileOperations fileOperations = new FileOperations();
+
+        Figura.save("figury.txt", figury);
+        List<Figura> figuraList = Figura.readFigury("figury.txt");
         for (Figura figura : figuraList) {
             System.out.println(figura);
         }
